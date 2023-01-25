@@ -1,0 +1,403 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact .info-box {
+  background-color: #ff3567;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  color: #ffffff;
+  padding: 30px 0 32px 0;
+  text-align: center;
+}
+.contact .info-box i {
+  border: 2px dotted #f8d4d5;
+  border-radius: 50%;
+  color: #e03a3c;
+  font-size: 32px;
+  padding: 8px;
+}
+.contact .info-box h3 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+.contact .info-box p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  padding: 0;
+}
+.contact .php-email-form {
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  padding: 30px;
+}
+.contact .php-email-form .error-message {
+  background: #ed3c0d;
+  color: #fff;
+  display: none;
+  font-weight: 600;
+  padding: 15px;
+  text-align: left;
+}
+.contact .php-email-form .error-message br + br {
+  margin-top: 25px;
+}
+.contact .php-email-form .sent-message {
+  background: #18d26e;
+  color: #fff;
+  display: none;
+  font-weight: 600;
+  padding: 15px;
+  text-align: center;
+}
+.contact .php-email-form .loading {
+  background: #fff;
+  display: none;
+  padding: 15px;
+  text-align: center;
+}
+.contact .php-email-form .loading:before {
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+  border: 3px solid #18d26e;
+  border-radius: 50%;
+  border-top-color: #eee;
+  content: "";
+  display: inline-block;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  width: 24px;
+}
+.contact .php-email-form .form-group {
+  margin-bottom: 25px;
+}
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  border-radius: 4px;
+  box-shadow: none;
+  font-size: 14px;
+}
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
+  border-color: #111111;
+}
+.contact .php-email-form input {
+  padding: 10px 15px;
+}
+.contact .php-email-form textarea {
+  padding: 12px 15px;
+}
+.contact .php-email-form button[type="submit"] {
+  background: #ff3567;
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+  padding: 10px 32px;
+  transition: 0.4s;
+}
+.contact .php-email-form button[type="submit"]:hover {
+  background: #e35052;
+}
+
+.contact .contact-texts {
+  display: inline;
+  white-space: nowrap;
+}
+.contact #image {
+  display: inline;
+}
+.contact #container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+}
+
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Results PAGE
+--------------------------------------------------------------*/
+.card-body tr {
+  border-bottom: 2px solid #0a0a0a;
+}
+.result-toggle {
+  background-color: #ffffffcb;
+  height: 50px;
+  padding-left: 10px;
+  text-align: center;
+}
+.results-col .active {
+  border-left: solid 5px black;
+}
+
+.card {
+  border: 2px solid#707070 !important;
+  border-radius: 0;
+  /* z-index: -1; */
+}
+
+.card .table-responsive thead {
+  /* margin: 100px 30px !important; */
+  color: #e03a3c;
+}
+
+/** Datatables styling  in results page */
+.card .sc-gYbzsP {
+  background-color: #ffffff;
+  border-bottom: solid 2px #838383 !important;
+  border-top: solid 2px #838383 !important;
+  /* margin: 100px 30px !important; */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0;
+}
+
+
+
+
+.ant-table-cell-row-hover {
+  border-radius: 0 !important;
+}
+
+thead.ant-table-thead tr th.ant-table-cell {
+  border-bottom: solid 3px #838383 !important;
+  border-radius: 0 !important;
+  border-top: solid 3px #838383 !important;
+  text-align: center;
+}
+
+
+thead.ant-table-thead tr th.ant-table-cell span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.sc-cCjUiG.sc-cjibBx.sc-jcMfQk.zRMfT.PMvBe.dqgOUc.rdt_TableCell {
+  border-bottom: 1.5px solid #dcdcdc;
+  padding: 0;
+}
+
+div.ant-table-column-sorters {
+  display: inline !important;
+  visibility: inherit;
+}
+/* continue tomorrow */
+span.ant-table-column-sorter-full {
+  background-color: #e03a3c;
+}
+
+span.ant-table-column-sorter {
+  background-color: #e03a3c;
+  display: none !important;
+}
+
+
+/* span.sc-jOiSOi.GpcvJ::before{
+content: '';
+} */
+
+/* .rdt_Table{
+  direction:rtl
+} */
+
+/* ant-pagination css-dev-only-do-not-override-1i9hnpv */
+
+ul.ant-pagination {
+  display: flex;
+  /* border:  solid; */
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+[title="Previous Page"] {
+  /* color:green; */
+  /* font-size:40px; */
+  /* font-weight:bold; */
+  /* text-align:center; */
+  margin: 0 auto;
+}
+
+[title="Previous Page"] :active {
+  /* background-color: #ff3567; */
+}
+
+.ant-pagination-prev[aria-disabled="false"] {
+  background-color: #ff3567;
+  color: #fff;
+  /* padding-left: 5px;
+  padding-right: 5px; */
+  padding: 0px 5px;
+}
+
+.ant-pagination-next[aria-disabled="false"] {
+  background-color: #ff3567;
+  color: #fff;
+  padding: 0px 5px;
+}
+
+:where(.css-dev-only-do-not-override-1i9hnpv).ant-pagination
+  .ant-pagination-item-active {
+  border-color: #838383;
+}
+
+.rdt_TableCol {
+  direction: rtl;
+  display: flex;
+  justify-content: flex-end;
+}
+
+tbody.ant-table-tbody tr.ant-table-row.ant-table-row-level-0 td.ant-table-cell {
+  /* height: 100px; */
+  /* position: relative;
+  top: 20px;*/
+  /* background-color: #e03a3c; */
+  border-top: none !important;
+  /* margin-top: 200px; */
+}
+
+tr.ant-table-row{
+  border-color: #838383;
+  /* background-color: #e03a3c; */
+}
+.ant-table-wrapper table {
+  border-collapse: collapse;
+}
+
+tr.ant-table-row.ant-table-row-level-0.no-hover:first-child {
+  /* color: #ff3567; */
+  /* border: none !important; */
+}
+
+tbody:before {
+  border-top: transparent;
+  content: "\200C";
+  display: block;
+  line-height: 3em;
+}
+
+.nav-link.dropdown-toggle::after{
+  /* color: green; */
+  display: none;
+}
+
+/** End of Datateable styling */
+/* #mybox:hover {
+  color: transparent;
+} */
+.card thead tr {
+  background-color: #f2f2f2;
+  border-bottom: solid 2px #838383 !important;
+  border-top: solid 2px #838383 !important;
+  /* margin: 100px 30px !important; */
+}
+
+.nav-pills .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.521);
+  border-left: solid 8px #ff3567 !important;
+  border-radius: 0;
+  color: #000;
+}
+
+a.nav-link.m-links-list-item,
+a.nav-link.m-links-list-item.active {
+  border: none !important;
+  color: rgb(5, 5, 5) !important;
+}
+
+/* .nav.m-margin.flex-column.nav-pills.me-3.col-lg-2{
+  text-align: left;
+  color: #18d26e;
+} */
+
+button.nav-link,
+a.nav-link.dropdown-toggle {
+  padding-left: 3rem !important;
+  text-align: left;
+}
+
+#v-pills-tabContent {
+  width: 60vw;
+}
+button.nav-link.dropdown-toggle {
+  /* to be continued  */
+  margin-left: 20px;
+}
+.nav-links-list,
+.nav-links-list.active {
+  color: #fff;
+}
+
+ul#collapsePane.show {
+  border: 0;
+  padding-left: 3px;
+}
+ul#collapsePane.nav-list-pane.show {
+  border: 0;
+  color: green;
+}
+
+.nav-pills {
+  background-color: #707070;
+  margin: 0 !important;
+  padding: 20px 0;
+}
+.nav-pills.nav-link {
+  /* border-radius: 0!important; */
+  color: #fff !important;
+}
+.nav-link {
+  color: #fff !important;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav-list-pane {
+  color: #fff;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  color: #fff !important;
+}
+
+.nav-link.dropdown-toggle {
+  color: #fff !important;
+  margin: 1px !important;
+  text-align: center;
+}
+
+.nav.m-margin {
+  margin-top: 3rem !important;
+}
+
+.m-col-table td {
+  /* border-color: #707070 !important; */
+  border-bottom-width: 2px;
+}
+/*--------------------------------------------------------------
+# results table
+--------------------------------------------------------------*/
+/* Style the tab */

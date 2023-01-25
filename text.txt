@@ -1,0 +1,18 @@
+http://192.168.199.120/1kball/dev/api/v1/1kball1min
+
+
+const fetchDefaultData = async (url = "http://192.168.199.120/1kball/dev/api/v1/1kball1min") => {
+     const {data} = await axios.get(url)
+     setData(data);
+     setLoading(false);
+  }
+
+
+  const fetchGamNames = async () => {
+    const {data} = await axios.get("http://192.168.199.120/1kball/dev/")
+       data.forEach(element => {
+        setGame_Names((prev)=> [...prev, element.game_name])
+    });
+    
+}
+  console.log(game_names)
