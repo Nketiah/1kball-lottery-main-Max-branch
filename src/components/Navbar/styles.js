@@ -26,7 +26,7 @@ export const Content = styled.div`
 
   margin-bottom: 0px;
 
-  background-color: #e5e5e5;
+  // background-color: #e5e5e5;
 `;
 
 export const NavList = styled.div`

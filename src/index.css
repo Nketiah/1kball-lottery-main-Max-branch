@@ -3,6 +3,53 @@
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
+
+
+.apis-items {
+  display: flex !important;
+  flex-direction: column;
+  height: 200px;
+  max-height: 350px;
+  overflow-y: scroll;
+  background-color: #b30f0f;
+  width: 100%;
+  position: absolute;
+}
+
+.is-visible{
+  visibility: hidden;
+}
+
+
+.is-active{
+  border-left: 8px solid #ff3567;
+  /* border-radius: 4px solid #c0778e; */
+  /* background-color: #e4e0e1; */
+  padding-top: 2px;
+  padding-bottom: 5px;
+  width: 100%;
+  /* box-shadow: 0 0 30px rgba(214, 215, 216, 0.6); */
+ 
+}
+
+.default {
+  background-color: #fff;
+}
+
+
+
+/* .active_0_4 .active_1_4 .active_0_5 .active_1_5  .active_0_6 .active_1_6    .active_0_7 .active_1_7{
+  background-color: #c0778e;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+} */
+
+
+
+
+
+
+
 .contact .info-box {
   background-color: #ff3567;
   border-radius: 4px;

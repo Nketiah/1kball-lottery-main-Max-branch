@@ -6,6 +6,7 @@ import EmptyComponent from "../EmptyComponent/EmptyComponent";
 import datas from "../../data.json";
 import { Table, Pagination, Spin } from "antd";
 import axios from "axios";
+import { IoIosArrowDown } from "react-icons/io"
 
 // import {CustomMaterialPagination} from "./Material";
 
@@ -16,8 +17,13 @@ const Results = () => {
   const [pageSize, setPageSize] = useState(10);
   const [data, setData] = useState([]);
   const [game_names, setGameNames] = useState([]);
+  const [game_category, setGameCategory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(datas.length);
+  const [gameNamePlaceholder, setGameNamePlaceholder] = useState("5D GAME")
+  const [activeLink, setActiveLink] = useState(false);
+  let counter = 0
+
   const handleToggle = () => {
     setToggle(!toggle);
   };
@@ -50,12 +56,18 @@ const Results = () => {
 
   }, []);
 
-
-  const fetchDefaultData = async (url = "http://192.168.199.120/1kball/dev/") => {
+  // http://192.168.199.120/1kball/dev/
+  const fetchDefaultData = async (url = "http://192.168.199.120/1kball/dev/api/v1/gamecat") => {
     const {data} = await axios.get(url)
+
+         
+
+    //const newData = data.filter((element) => element !== data.))
 
     setGameNames(data);
     setLoading(false);
+
+    console.log("Game names  ",data);
 
  }
 
@@ -68,21 +80,25 @@ const Results = () => {
 
 
 
- const getEachDataFromUrl = async (url) => {
+ const getEachDataFromUrl = async (url, index, count, e) => {
+
+
+        e.target.className = "is-active";
+      
+      e.currentTarget.addEventListener("blur", (ex)=> {
+        e.target.className = "";
+      })
+    
    const {data} = await axios.get(url)
-   setData(data);
+ 
+    setData(data);
+    setActiveLink(true)
+   
+
  }
 
 
-//  const fetchGamNames = async () => {
-//   const {data} = await axios.get("http://192.168.199.120/1kball/dev/")
-//      data.forEach(ele => {
-//       setGameNames((prev)=> [...prev, {game_name: ele.game_name, url: ele.data_url}])
-//       console.log("ELE", ele)
-//   });
-  
-// }
-// console.log(" Lenght..... ",data.length)
+
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -221,13 +237,20 @@ const Results = () => {
   //const paginatedData = currentPage === 1 ? sortedData : getData(currentPage, pageSize);
   /////My custom code
    
-  const getDataFromApi = async (uri) => {
-    //alert(uri)
-  
-    //fetchDefaultData(uri)
-    getEachDataFromUrl(uri)
+ 
+
+
+  const getGameCategoryData = async (uri, game_name) => {
+    const {data} = await axios.get(uri);
+    let count = 0
+     data.forEach((d)=> {
+      d.count = count++
+    })
+    setGameCategory(data)
+    setGameNamePlaceholder(game_name)
   }
 
+ 
   /////My custom code
   return (
     <Wrapper>
@@ -252,12 +275,12 @@ You can view the latest numbers including detailed information of winners and pr
         </div>
         <div className="d-flex align-items-start justify-content-stretch">
           <div
-            className="nav m-margin flex-column nav-pills me-3 col-lg-2"
+            className="nav m-margin flex-column nav-pills me-2 col-lg-3"
             id="v-pills-tab"
             role="tablist"
             aria-orientation="horizontal"
           >
-           {
+           {/* {
             game_names.map((element, index)=> (
 
             <button
@@ -272,12 +295,65 @@ You can view the latest numbers including detailed information of winners and pr
               aria-selected="true"
               data-uri={element.data_url}
             >
-              {element.game_name}
+              {element.category_name}
             </button>
-            )) }
+            )) } */}
+
+
+           {  
+             game_names.map((game, parent_index)=>
+             
+            //  <li className="nav-item dropdown" key={index}>
+            <li className="" key={parent_index}>
+            
+              <a
+                className="nav-link dropdown-toggle d-flex align-items-center justify-content-between"
+                data-bs-toggle="collapse"
+                href={`${'#collapsePane_' + game.catid}`}
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapsePane"
+                onClick={()=> getGameCategoryData(game.game_url,game.category_name)}
+              >
+                {game.category_name} <IoIosArrowDown />
+              </a>
+              <ul
+                className="collapse nav-list-pane  bg-white text-black"
+                id={`${'collapsePane_' + game.catid}`}
+              >
+                {
+                  game_category.map((category, index)=>
+                <li key={index}>
+                  
+                  <a
+                    onClick={(e)=> getEachDataFromUrl(category.data_url, index, category.count, e)}
+                    // className='nav-link nav-links-list m-links-list-item'
+                    className='nav-link nav-links-list m-links-list-item nav-item is-active'
+                    id={`${'v-pills-profile-tab_' + index}`}
+                    data-bs-toggle={`${'pill_' + index + '_' + parent_index}`}
+                    data-bs-target={`${'#v-pills-profile_' + index}`}
+                    type="button"
+                    role="tab"
+                    href="#"
+                    aria-controls={`${'v-pills-profile_' + index}`}
+                    aria-selected="false"
+                  >
+                   <p style={{marginLeft:"3px"}}> {category.game_name}</p>
+                  </a>
+                </li>
+                   )
+                 }
+
+              </ul>
+            </li>
+
+            )
+           }
+
+
 
             {/* <li className="nav-item dropdown">
-              work on styling the button
+           
               <a
                 className="nav-link dropdown-toggle d-flex align-items-center justify-content-between"
                 data-bs-toggle="collapse"
@@ -286,7 +362,7 @@ You can view the latest numbers including detailed information of winners and pr
                 aria-expanded="false"
                 aria-controls="collapsePane"
               >
-                5 D <img src={images.downArrowIcon} alt="ss" />
+                3 D <img src={images.downArrowIcon} alt="ss" />
               </a>
               <ul
                 className="collapse nav-list-pane  bg-white text-black"
@@ -308,24 +384,18 @@ You can view the latest numbers including detailed information of winners and pr
                     Action
                   </a>
                 </li>
-                <li>
-                  <a
-                    className="nav-link m-links-list-item"
-                    id="v-pills-disabled-tab"
-                    data-bs-toggle="pill"
-                    data-bs-target="#v-pills-disabled"
-                    type="button"
-                    role="tab"
-                    aria-controls="v-pills-disabled"
-                    aria-selected="false"
-                    data-uri="http://192.168.199.120/1kball/dev/api/v1/"
-                  >
-                    Another
-                  </a>
-                </li>
+        
               </ul>
-            </li> */}
-           
+            </li>
+
+
+ */}
+
+
+
+
+
+
           </div>
           <div className="tab-content" id="v-pills-tabContent">
             <div
@@ -342,7 +412,7 @@ You can view the latest numbers including detailed information of winners and pr
                 <div className="card shadow border-0">
                   <div className="card-body p-5 bg-white ">
                     <div className="table-responsive">
-                      <TableHeader>5 D .. 5D1</TableHeader>
+                      <TableHeader>{gameNamePlaceholder}</TableHeader>
                       <Spin spinning={loading}>
                       <Table
                         columns={columns}

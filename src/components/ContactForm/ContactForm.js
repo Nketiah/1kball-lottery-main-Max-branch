@@ -3,28 +3,27 @@ import React from "react";
 import PhoneIcon from "../../images/n_055904.png";
 import MailIcon from "../../images/n_61188.png";
 import GPSIcon from "../../images/location-black-png-10.png";
+import {FaTelegramPlane} from "react-icons/fa"
+import { Link } from "react-router-dom";
 
 const ContactForm = () => {
   return (
     <section id="contact" className="contact">
       <div className="container">
         <div className="section-title">
-          <h1>Get in touch</h1>
+          {/* <h1>Get in touch</h1> */}
         </div>
         <div className="row">
           <div className="col-lg-8">
-            <form
+            {/* <form
               action=""
               method="post"
-              //   role="form"
+             
               className="php-email-form"
               id="contact-form-unique"
             >
               <div className="row">
-                {/* <div class="controls controls-row">
-                    <input id="name" name="name" type="text" class="span3" placeholder="Name" /> 
-                    <input id="email" name="email" type="email" class="span3" placeholder="Email address" />
-                </div> */}
+               
                 <div className="col form-group">
                   <input
                     type="text"
@@ -98,7 +97,7 @@ const ContactForm = () => {
               <div className="text-center">
                 <button type="submit">Send Message</button>
               </div>
-            </form>
+            </form> */}
           </div>
           <div className="col-lg-4">
             <div className="row">
@@ -106,21 +105,26 @@ const ContactForm = () => {
                 <div className="info-box">
                   <h3>Contact Info</h3>
                   <div id="container" style={{ whiteSpace: "nowrap" }}>
-                    <div id="image">
+                    {/* <div id="image">
                       <img src={GPSIcon} alt="location" />
-                    </div>
+                    </div> */}
 
-                    <div id="texts" className="contact-texts">
+                    {/* <div id="texts" className="contact-texts">
                       Accra-Ghana
-                    </div>
+                    </div> */}
                   </div>
                   <div id="container" style={{ whiteSpace: "nowrap" }}>
                     <div id="image">
-                      <img src={PhoneIcon} alt="call" />
+                      <FaTelegramPlane size={35} style={{ color:"#000" }} />
                     </div>
 
                     <div id="texts" className="contact-texts">
-                      +233 (0) 12345678
+                      <a
+                        href="https://telegram.org/@a1kball"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ color:"#fff" }}
+                        >@a1kball</a>
                     </div>
                   </div>
                   <div id="container" style={{ whiteSpace: "nowrap" }}>
