@@ -7,10 +7,15 @@ import datas from "../../data.json";
 import { Table, Pagination, Spin } from "antd";
 import axios from "axios";
 import { IoIosArrowDown } from "react-icons/io"
+import ApiData from "../Apis/ApiData";
+
+
 
 // import {CustomMaterialPagination} from "./Material";
 
-const Results = () => {
+const Results = ({hidePage}) => {
+
+
   const [toggle, setToggle] = useState(false);
   const [toggleArray, setToggleArray] = useState([false, false, false]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,8 +26,9 @@ const Results = () => {
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(datas.length);
   const [gameNamePlaceholder, setGameNamePlaceholder] = useState("5D GAME")
-  const [activeLink, setActiveLink] = useState(false);
-  let counter = 0
+ 
+
+ 
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -46,15 +52,19 @@ const Results = () => {
     //   setLoading(false);
     // }
   
-    // fetchData("http://192.168.199.120/1kball/dev/api/v1/1kball1min");
+    //fetchData("http://192.168.199.120/1kball/dev/api/v1/1kball1min");
     
     fetchDefaultData()
 
-     getFirstGame()
+    getFirstGame()
     
 
 
   }, []);
+
+
+  
+
 
   // http://192.168.199.120/1kball/dev/
   const fetchDefaultData = async (url = "http://192.168.199.120/1kball/dev/api/v1/gamecat") => {
@@ -68,6 +78,7 @@ const Results = () => {
     setLoading(false);
 
     console.log("Game names  ",data);
+    // <ApiData data={[1,3,4]} />
 
  }
 
@@ -75,15 +86,13 @@ const Results = () => {
  const getFirstGame = async () => {
     const response = await axios.get("http://192.168.199.120/1kball/dev/api/v1/1kball1min")
     setData(response.data);
-
  }
 
 
 
  const getEachDataFromUrl = async (url, index, count, e) => {
 
-
-        e.target.className = "is-active";
+      e.target.className = "is-active";
       
       e.currentTarget.addEventListener("blur", (ex)=> {
         e.target.className = "";
@@ -91,9 +100,7 @@ const Results = () => {
     
    const {data} = await axios.get(url)
  
-    setData(data);
-    setActiveLink(true)
-   
+    setData(data); 
 
  }
 
@@ -252,6 +259,10 @@ const Results = () => {
 
  
   /////My custom code
+
+
+  if(hidePage)  return null
+
   return (
     <Wrapper>
       <Content>
@@ -323,11 +334,10 @@ You can view the latest numbers including detailed information of winners and pr
               >
                 {
                   game_category.map((category, index)=>
-                <li key={index}>
+                  <li key={index}>
                   
                   <a
                     onClick={(e)=> getEachDataFromUrl(category.data_url, index, category.count, e)}
-                    // className='nav-link nav-links-list m-links-list-item'
                     className='nav-link nav-links-list m-links-list-item nav-item is-active'
                     id={`${'v-pills-profile-tab_' + index}`}
                     data-bs-toggle={`${'pill_' + index + '_' + parent_index}`}
@@ -411,10 +421,11 @@ You can view the latest numbers including detailed information of winners and pr
               >
                 <div className="card shadow border-0">
                   <div className="card-body p-5 bg-white ">
-                    <div className="table-responsive">
+                    <div className="table-responsive" style={{zIndex:"0px"}}>
                       <TableHeader>{gameNamePlaceholder}</TableHeader>
                       <Spin spinning={loading}>
                       <Table
+                      style={{zIndex:"0px"}}
                         columns={columns}
                         dataSource={getData(currentPage, pageSize)}
                         // dataSource={paginatedData}
@@ -450,6 +461,7 @@ You can view the latest numbers including detailed information of winners and pr
                       <TableHeader>5 D .. 5D1</TableHeader>
                       <Spin spinning={loading}>
                       <Table
+                      style={{zIndex:"0px" , position:"relative"}}
                         columns={columns}
                         dataSource={getData(currentPage, pageSize)}
                         // dataSource={paginatedData}
@@ -552,217 +564,7 @@ You can view the latest numbers including detailed information of winners and pr
                 <div className="card shadow border-0">
                   <div className="card-body p-5 bg-white ">
                     <div className="table-responsive">
-                      <table
-                        id="example"
-                        style={{ width: "100%" }}
-                        className="table "
-                      >
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>
-                              <img src={images.ArrowDownIcon} alt="ss" />
-                              Number
-                            </th>
-                            <th>
-                              <img src={images.ArrowIcon} alt="ss" />
-                              DrawDate
-                            </th>
-                            <th>
-                              <img src={images.ArrowIcon} alt="ss" />
-                              DrawDateXXX
-                            </th>
-                            <th>
-                              <img src={images.ArrowIcon} alt="ss" />
-                              DrawTime
-                            </th>
-                            {/* <th>Start date</th>
-                  <th>Salary</th> */}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                          </tr>
-                          <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                          </tr>
-                          <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                          </tr>
-                          <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                          </tr>
-                          <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                          </tr>
-                          <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                          </tr>
-                          <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                          </tr>
-                          <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                          </tr>
-                          <tr>
-                            <td>Colleen Hurst</td>
-                            <td>Javascript Developer</td>
-                            <td>San Francisco</td>
-                            <td>39</td>
-                          </tr>
-                          <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>Edinburgh</td>
-                            <td>23</td>
-                          </tr>
-                          <tr>
-                            <td>Jena Gaines</td>
-                            <td>Office Manager</td>
-                            <td>London</td>
-                            <td>30</td>
-                          </tr>
-                          <tr>
-                            <td>Quinn Flynn</td>
-                            <td>Support Lead</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                          </tr>
-                          <tr>
-                            <td>Charde Marshall</td>
-                            <td>Regional Director</td>
-                            <td>San Francisco</td>
-                            <td>36</td>
-                          </tr>
-                          <tr>
-                            <td>Haley Kennedy</td>
-                            <td>Senior Marketing Designer</td>
-                            <td>London</td>
-                            <td>43</td>
-                          </tr>
-                          <tr>
-                            <td>Tatyana Fitzpatrick</td>
-                            <td>Regional Director</td>
-                            <td>London</td>
-                            <td>19</td>
-                          </tr>
-                          <tr>
-                            <td>Michael Silva</td>
-                            <td>Marketing Designer</td>
-                            <td>London</td>
-                            <td>66</td>
-                          </tr>
-                          <tr>
-                            <td>Paul Byrd</td>
-                            <td>Chief Financial Officer (CFO)</td>
-                            <td>New York</td>
-                            <td>64</td>
-                          </tr>
-                          <tr>
-                            <td>Gloria Little</td>
-                            <td>Systems Administrator</td>
-                            <td>New York</td>
-                            <td>59</td>
-                          </tr>
-                          <tr>
-                            <td>Bradley Greer</td>
-                            <td>Software Engineer</td>
-                            <td>London</td>
-                            <td>41</td>
-                          </tr>
-                          <tr>
-                            <td>Dai Rios</td>
-                            <td>Personnel Lead</td>
-                            <td>Edinburgh</td>
-                            <td>35</td>
-                          </tr>
-                          <tr>
-                            <td>Jenette Caldwell</td>
-                            <td>Development Lead</td>
-                            <td>New York</td>
-                            <td>30</td>
-                          </tr>
-                          <tr>
-                            <td>Yuri Berry</td>
-                            <td>Chief Marketing Officer (CMO)</td>
-                            <td>New York</td>
-                            <td>40</td>
-                          </tr>
-                          <tr>
-                            <td>Caesar Vance</td>
-                            <td>Pre-Sales Support</td>
-                            <td>New York</td>
-                            <td>21</td>
-                          </tr>
-                          <tr>
-                            <td>Doris Wilder</td>
-                            <td>Sales Assistant</td>
-                            <td>Sidney</td>
-                            <td>23</td>
-                          </tr>
-                          <tr>
-                            <td>Angelica Ramos</td>
-                            <td>Chief Executive Officer (CEO)</td>
-                            <td>London</td>
-                            <td>47</td>
-                          </tr>
-                          <tr>
-                            <td>Gavin Joyce</td>
-                            <td>Developer</td>
-                            <td>Edinburgh</td>
-                            <td>42</td>
-                          </tr>
-                          <tr>
-                            <td>Jennifer Chang</td>
-                            <td>Regional Director</td>
-                            <td>Singapore</td>
-                            <td>28</td>
-                          </tr>
-                          <tr>
-                            <td>Brenden Wagner</td>
-                            <td>Software Engineer</td>
-                            <td>San Francisco</td>
-                            <td>28</td>
-                          </tr>
-                          <tr>
-                            <td>Fiona Green</td>
-                            <td>Chief Operating Officer (COO)</td>
-                            <td>San Francisco</td>
-                            <td>48</td>
-                          </tr>
-                          <tr>
-                            <td>Shou Itou</td>
-                            <td>Regional Marketing</td>
-                            <td>Tokyo</td>
-                            <td>20</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      
                     </div>
                   </div>
                 </div>
@@ -777,25 +579,3 @@ You can view the latest numbers including detailed information of winners and pr
 };
 
 export default Results;
-// const sortData = (data) => {
-//   // Call slice to create a new Array and prevent mutating it if it's stored in state
-//   return data.slice().sort((a, b) => a.myKey - b.myKey);
-// }
-// const sortableColumns = columns.map(column => {
-//   const { sorter, dataIndex, ...otherColumnProps } = column;
-
-//   if (sorter) {
-//     const { compare, ...otherSorterProps } = sorter;
-
-//     return {
-//       ...otherColumnProps,
-//       dataIndex,
-//       sorter: {
-//         compare: (rowA, rowB) => compare(rowA[dataIndex], rowB[dataIndex]),
-//         ...otherSorterProps,
-//       }
-//     };
-//   }
-
-//   return column;
-// });

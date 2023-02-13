@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Wrapper, Content, Heading } from "./styles";
 
 import GridContainer from "../GridContainer/GridContainer";
@@ -7,23 +7,14 @@ import BlurCardImg from "../BlurCardImg/BlurCardImg";
 import Text from "../Text/Text";
 
 import images from "../../constants/images";
-// import images.Manager from "../../images/images.Manager@2x.png";
-// import images.Manager2 from "../../images/images.Manager.png";
-// import images.Report from "../../images/images.Reports@2x.png";
-// import images.Report2 from "../../images/images.Reports.png";
-// import images.Tech from "../../images/n_250593_ms@2x.png";
-// import images.Tech2 from "../../images/n_250593_ms.png";
-// import Secure from "../../images/n_02649@2x.png";
-// import Secure2 from "../../images/n_02649.png";
-// import Gamepad from "../../images/made_for_player@2x.png";
-// import Gamepad2 from "../../images/made_for_player.png";
-// import images.Responsive from "../../images/images.Responsive@2x.png";
-// import images.Responsive2 from "../../images/images.Responsive.png";
-// import images.Paint from "../../images/n_1-419128_images.Paint-palette-and-b@2x.png";
-// import images.Paint2 from "../../images/n_1-419128_images.Paint-palette-and-b.png";
 import EmptyComponent from "../EmptyComponent/EmptyComponent";
 
+
+
 const Home = () => {
+
+ 
+
   return (
     <Wrapper>
       <Content>

@@ -11,13 +11,15 @@
   height: 200px;
   max-height: 350px;
   overflow-y: scroll;
-  background-color: #b30f0f;
+  /* background-color: #b30f0f; */
   width: 100%;
   position: absolute;
+  z-index: 20px;
+  background-color: rgb(19, 2, 2);
 }
 
 .is-visible{
-  visibility: hidden;
+  visibility: visible;
 }
 
 
@@ -35,19 +37,6 @@
 .default {
   background-color: #fff;
 }
-
-
-
-/* .active_0_4 .active_1_4 .active_0_5 .active_1_5  .active_0_6 .active_1_6    .active_0_7 .active_1_7{
-  background-color: #c0778e;
-  border-radius: 4px;
-  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-} */
-
-
-
-
-
 
 
 .contact .info-box {

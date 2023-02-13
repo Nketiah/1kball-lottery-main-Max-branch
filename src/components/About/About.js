@@ -1,13 +1,24 @@
 import React from "react";
+import { useState } from "react";
 import BlurCard from "../BlurCard/BlurCard";
 import EmptyComponent from "../EmptyComponent/EmptyComponent";
+import Navbar from "../Navbar/Navbar";
 import Text from "../Text/Text";
 import { Wrapper, Content, Heading } from "./styles";
 
-const About = () => {
+
+
+
+
+const About = ({hidePage}) => {
+
+
+if(hidePage)  return null
+
   return (
     <Wrapper>
       <Content>
+
         <Text
           heading="About Us"
           body={`1kball Lottery has always been in the leading position in the industry with
