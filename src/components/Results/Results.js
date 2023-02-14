@@ -67,7 +67,7 @@ const Results = ({hidePage}) => {
 
 
   // http://192.168.199.120/1kball/dev/
-  const fetchDefaultData = async (url = "http://192.168.199.120/1kball/dev/api/v1/gamecat") => {
+  const fetchDefaultData = async (url = "http://89.47.162.79/1kball/dev/api/v1/gamecat") => {
     const {data} = await axios.get(url)
 
          
@@ -84,7 +84,7 @@ const Results = ({hidePage}) => {
 
 
  const getFirstGame = async () => {
-    const response = await axios.get("http://192.168.199.120/1kball/dev/api/v1/1kball1min")
+    const response = await axios.get("http://89.47.162.79/1kball/dev/api/v1/1kball1min")
     setData(response.data);
  }
 

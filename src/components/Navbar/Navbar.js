@@ -34,7 +34,7 @@ const[gameCategory, setGameCategory] = useState([])
 
 
 const getApiData =async () => {
-    const {data} = await axios.get("http://192.168.199.120/1kball/dev/")
+    const {data} = await axios.get("http://89.47.162.79/1kball/dev/")
     setGameCategory(data)
   
 }
